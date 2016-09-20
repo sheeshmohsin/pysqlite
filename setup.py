@@ -91,7 +91,7 @@ def get_amalgamation():
     if os.path.exists(AMALGAMATION_ROOT):
         return
     os.mkdir(AMALGAMATION_ROOT)
-    print "Downloading amalgation."
+    print("Downloading amalgation.")
 
     # find out what's current amalgamation ZIP file
     download_page = urllib.urlopen("http://sqlite.org/download.html").read()
@@ -106,7 +106,7 @@ def get_amalgamation():
     files = ["sqlite3.c", "sqlite3.h"]
     directory = zf.namelist()[0]
     for fn in files:
-        print "Extracting", fn
+        print("Extracting", fn)
         outf = open(AMALGAMATION_ROOT + os.sep + fn, "wb")
         outf.write(zf.read(directory + fn))
         outf.close()
@@ -153,7 +153,7 @@ def get_setup_args():
     f.close()
 
     if not PYSQLITE_VERSION:
-        print "Fatal error: PYSQLITE_VERSION could not be detected!"
+        print("Fatal error: PYSQLITE_VERSION could not be detected!")
         sys.exit(1)
 
     data_files = [("pysqlite2-doc",
